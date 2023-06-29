@@ -28,7 +28,7 @@ export const Login = () => {
     <div className='entryPage'>
         <div className='entryForm'>
             <span className="logo">CODA</span>
-            <span className="title">Register</span>
+            <span className="title">Log In</span>
             <form onSubmit={handleSubmit}>
                 <input type="email" placeholder='email'/>
                 <input type="password" placeholder='password' />
