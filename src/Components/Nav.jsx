@@ -1,6 +1,7 @@
 import React from 'react'
 import pfp from "../Images/cover.jpg"
-
+import { signOut } from 'firebase/auth';
+import { auth } from '../firebase';
 
 
 
@@ -14,7 +15,7 @@ const Nav = () => {
       <div className="user">
         <img src={pfp} alt="" />
         <span>Name</span>
-        <button>Sign Out</button>
+        <button onClick={() =>signOut(auth)}>Sign Out</button>
       </div>
     </div>
   )
