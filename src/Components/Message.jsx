@@ -1,6 +1,7 @@
 import React, {useContext, useRef, useEffect} from 'react'
 import { AuthContext } from '../context/AuthContext'
 import { ChatContext } from '../context/ChatContext'
+import { Timestamp } from 'firebase/firestore'
 
 
 
@@ -23,7 +24,6 @@ const Message = ({message}) => {
     <div ref={ref} className={`message ${message.senderID === currentUser.uid && "owner"}`}>
       <div className="messageInfo">
         <img src={message.senderID === currentUser.uid ? currentUser.photoURL : data.user.photoURL} alt="" />
-        <span>Just now</span>
       </div>
       <div className="messageContent">
         <p>{message.text}</p>

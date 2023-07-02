@@ -262,19 +262,18 @@
                 overflow-y: scroll;
 
                 .message{
+                    padding: 0.75rem;
                     display: flex;
-                    gap: 1.25rem;
+                    align-items: center;
+                    gap: 0.25rem;
 
                     .messageInfo{
                         display: flex;
-                        flex-direction: column;
                         color: #0578A6;
-                        font-weight: lighter;
-                        margin-bottom: 1.2rem;
                         img{
-                            width: 2rem;
+                            width: 5rem;
                             height: auto;
-                            border-radius: 50%;
+                            clip-path: circle();
                             object-fit: cover;
                         }
                     }
@@ -324,6 +323,11 @@
                     &:active{
                         transform: scale(0.9);
                     }
+                }
+                form{
+                    display: flex;
+                    align-items: center;
+                    width: 100%;
                 }
 
                 input{

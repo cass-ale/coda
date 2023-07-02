@@ -17,21 +17,18 @@ import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage'
 const Input = () => {
   const [text, setText] = useState("");
   const [img, setImg] = useState(null);
-  const [err, setErr] = useState(false);
   const {currentUser} = useContext(AuthContext);
   const {data} = useContext(ChatContext);
   const plctxt = "Send something cute to ";
 
-  const handleSend = async () =>{
+  const handleSend = async (e) =>{
+    e.preventDefault();
     if (img) {
       const storageRef = ref(storage, uuid());
 
       const uploadTask = uploadBytesResumable(storageRef, img);
+
       uploadTask.on(
-        (err) => {
-         setErr(true);
-         alert("Something went wrong, please try again.", err);
-        },
         () => {
           getDownloadURL(uploadTask.snapshot.ref).then(async (downloadURL) => {
             await updateDoc(doc(db, "chats", data.chatId), {
@@ -72,14 +69,15 @@ const Input = () => {
       [data.chatID+".date"]: serverTimestamp()
     });
 
-    setText("")
-    setImg(null)
+    setText("");
+    setImg(null);
 
-  }
+  };
 
 
   return (
     <div className='input'>
+      <form onSubmit={handleSend}>
         <input type="file" style={{display: "none"}} id='file' onChange={(e)=>setImg(e.target.files[0])}/>
         <label htmlFor="file">
           <img src={plus} alt="" />
@@ -91,6 +89,7 @@ const Input = () => {
           <img src={send} alt="" />
         </label>
       </div>
+      </form>
     </div>
   )
 }
