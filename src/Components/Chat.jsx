@@ -1,9 +1,10 @@
-import React from 'react';
+import React, {useContext,} from 'react';
 import Messages from './Messages';
 import Input from './Input';
 import more from '../Images/more-vertical.svg';
 import add from '../Images/user-plus.svg';
 import video from '../Images/video.svg';
+import { ChatContext } from '../context/ChatContext';
 
 
 
@@ -12,10 +13,13 @@ import video from '../Images/video.svg';
 
 
 const Chat = () => {
+  const { data } = useContext(ChatContext);
+
+
   return (
     <div className='chat'>
       <div className="chatInfo">
-        <span>userName</span>
+        <span>{data.user?.userName}</span>
         <div className="chatIcons">
           <img src={video} alt="" />
           <img src={add} alt="" />
