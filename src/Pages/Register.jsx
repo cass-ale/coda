@@ -74,7 +74,7 @@ const Register = () => {
             <span>Upload your profile picture</span>
           </label>
           <button disabled={loading}>Sign up</button>
-          {loading && "Uploading and compressing the image please wait..."}
+          {loading && <span>Uploading and compressing the image please wait...</span>}
           {err && <span>Something went wrong</span>}
         </form>
         <p>

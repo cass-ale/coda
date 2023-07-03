@@ -73,9 +73,10 @@ const Search = () => {
       }
     } catch (err) {
       setErr(true)
+    }
       setUser(null);
       setUsername("")
-    }
+
   };
   return (
     <div className="search">

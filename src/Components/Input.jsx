@@ -28,6 +28,8 @@ const Input = () => {
     e.code === "Enter" && handleSend();
   };
 
+  const isDisabled = text === "" && img === null;
+
   const handleSend = async () => {
     if (img) {
       const storageRef = ref(storage, uuid());
@@ -35,9 +37,7 @@ const Input = () => {
       const uploadTask = uploadBytesResumable(storageRef, img);
 
       uploadTask.on(
-        (error) => {
-          
-        },
+        (error) => {},
         () => {
           getDownloadURL(uploadTask.snapshot.ref).then(async (downloadURL) => {
             await updateDoc(doc(db, "chats", data.chatId), {
@@ -52,7 +52,7 @@ const Input = () => {
           });
         }
       );
-    } else {
+    } else if (text) {
       await updateDoc(doc(db, "chats", data.chatId), {
         messages: arrayUnion({
           id: uuid(),
@@ -61,7 +61,7 @@ const Input = () => {
           date: Timestamp.now(),
         }),
       });
-    }
+    } else {return null}
 
     await updateDoc(doc(db, "userChats", currentUser.uid), {
       [data.chatId + ".lastMessage"]: {
@@ -88,7 +88,7 @@ const Input = () => {
         </label>
       <input type="text" placeholder="Send a message" onKeyDown={handleKey} onChange={(e)=>setText(e.target.value)} value={text}/>
       <div className="send">
-        <button id='button' style={{display: "none"}}>Send</button>
+        <button disabled={isDisabled} id='button' style={{display: "none"}}>Send</button>
         <label htmlFor="button" onClick={handleSend}>
           <img src={send} alt="" />
         </label>
