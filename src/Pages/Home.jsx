@@ -12,11 +12,12 @@ import { HideContext } from '../context/HideContext'
 const Home = () => {
 
   const {showChat} = useContext(HideContext);
+  const {showSide} = useContext(HideContext);
 
   return (
     <div className='Home'>
       <div className="container">
-        <Sidebar />
+        {showSide && <Sidebar />}
         {!showChat ? (<Placeholder />) : (
         <Chat />)}
       </div>
