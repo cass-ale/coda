@@ -5,6 +5,18 @@
     background-color: #011526;
 }
 
+@font-face {
+    font-family: "FiraEBold";
+    src: url(./Fonts/Fira_Sans_Condensed/FiraSansCondensed-ExtraBold.ttf);
+}
+@font-face {
+    font-family: "OverpassB";
+    src: url(./Fonts/Overpass/static/Overpass-Bold.ttf);
+}
+@font-face {
+    font-family: "Mukta";
+    src: url(./Fonts/Mukta/Mukta-Regular.ttf);
+}
 
 @mixin mobile{
     @media screen and (max-width: 480px) {
@@ -45,10 +57,12 @@
         .logo {
             color: #D90754;
             font-weight: bold;
-            font-size: 2rem;
+            font-size: 3rem;
+            font-family: "FiraEBold";
         }
         .title {
             color: #D90754;
+            font-family: "OverpassB";
         }
 
 
@@ -58,6 +72,7 @@
             flex-direction: column;
             align-items: center;
             gap: 2rem;
+            font-family: "Mukta";
 
             input {
                 width: 15rem;
@@ -66,6 +81,7 @@
                 color: #011526;
                 border-bottom: #D90754 0.05rem solid;
                 background-color: transparent;
+                font-family: "Mukta";
                 &::placeholder {
                     color: darkgrey;
                 }
@@ -92,12 +108,14 @@
                 gap: 1rem;
                 color: #0578A6;
                 font-size: 0.85rem;
+                font-family: "Mukta";
                 cursor: pointer;
             }
         }
         p {
             color: #0578A6;
             font-size: 0.85rem;
+            font-family: "Mukta";
             a {
                 color: #D90754;
                 text-decoration: none;
@@ -110,7 +128,7 @@
             }
         }
         span{
-            color: #011526;
+            color: #D90754;
         }
     }
 }
@@ -146,6 +164,8 @@
                 .logo {
                     font-weight: bold;
                     color: #D90754;
+                    font-family: "FiraEBold";
+                    font-size: 2rem;
                     @include tablet{
                         display: none;
                     }
@@ -153,6 +173,7 @@
 
                 .user {
                     display: flex;
+                    align-items: center;
                     gap: 1rem;
 
                     img{
@@ -165,12 +186,14 @@
                     span{
                         color: #e6f3fe;
                         font-size: 1rem;
+                        font-family: "OverpassB";
                     }
                     button{
                         font-weight: bold;
                         font-size: 0.85rem;
                         border: none;
                         background-color: #D90754;
+                        font-family: "OverpassB";
                         color: #e6f3fe;
                         cursor: pointer;
                         transition: all 0.15s;
@@ -191,7 +214,8 @@
                         border: none !important;
                         outline: none !important;
                         color: #D90754 !important;
-                        padding: 0.5rem;
+                        padding: 0.75rem;
+                        font-family: "Mukta";
                         &::placeholder{
                             color: #0578A6;
                         }
@@ -219,16 +243,19 @@
                     span{
                         font-weight: bold;
                         font-size: 1.15rem;
+                        font-family: "OverpassB";
                     }
                     p{
                         color: lightgrey;
                         font-size: 0.9rem;
+                        margin-top: 0.25rem;
+                        font-family: "Mukta";
                     }
                 }
             }
         }
         .chat{
-            flex: 2;
+            flex: 3;
             background-color: #011526;
 
             .chatInfo {
@@ -239,6 +266,7 @@
                 align-items: center;
                 justify-content: space-between;
                 color: #e6f3fe;
+                font-family: "OverpassB";
             }
 
             .chatIcons {
@@ -258,7 +286,7 @@
 
             .messages {
                 padding: 1rem;
-                height: calc(100% - 178px);
+                height: calc(100% - 168px);
                 overflow-y: scroll;
 
                 .message{
@@ -288,10 +316,14 @@
                             color: #D90754;
                             padding: 0.5rem 1rem;
                             border-radius: 2rem;
+                            font-family: "Mukta";
                         }
                         img{
                             width: 15rem;
                             height: auto;
+                            background-color: #e6f3fe;
+                            padding: 1rem;
+                            border-radius: 2rem;
                         }
                     }
 
@@ -306,6 +338,10 @@
                             border-radius: 2rem 2rem 0.4rem 2rem;
                             max-width: max-content;
                         }
+                        img{
+                            background-color: #D90754;
+                            border-radius: 2rem 2rem 0.4rem 2rem;
+                        }
                     }
                     }
                 }
@@ -314,7 +350,7 @@
             .input {
                 height: 2rem;
                 background-color: #e6f3fe;
-                padding: 1rem;
+                padding: 0.75rem;
                 display: flex;
                 align-items: center;
                 justify-content: space-between;
@@ -325,13 +361,8 @@
                         transform: scale(0.9);
                     }
                 }
-                form{
-                    display: flex;
-                    align-items: center;
-                    width: 100%;
-                }
-
                 input{
+                    font-family: "Mukta";
                     background-color: transparent !important;
                     border: none !important;
                     outline: none !important;
@@ -352,6 +383,19 @@
                         }
                     }
                 }
+            }
+        }  & .placeholder{
+            display: flex;
+            width: 100%;
+            height: 100%;
+            color: #D90754;
+            justify-content: center;
+            align-items: center;
+            font-weight: bolder;
+            font-size: 15rem;
+            font-family: "FiraEBold";
+            span{
+                opacity: 0.55;
             }
         }
     }

@@ -1,6 +1,8 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import Sidebar from "../Components/Sidebar"
 import Chat from "../Components/Chat"
+import Placeholder from "../Components/PlaceholderChat"
+import { HideContext } from '../context/HideContext'
 
 
 
@@ -8,11 +10,15 @@ import Chat from "../Components/Chat"
 
 
 const Home = () => {
+
+  const {showChat} = useContext(HideContext);
+
   return (
     <div className='Home'>
       <div className="container">
         <Sidebar />
-        <Chat />
+        {!showChat ? (<Placeholder />) : (
+        <Chat />)}
       </div>
     </div>
   )

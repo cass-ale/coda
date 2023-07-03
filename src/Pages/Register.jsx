@@ -65,17 +65,17 @@ const Register = () => {
         <span className="logo">CODA</span>
         <span className="title">Register</span>
         <form onSubmit={handleSubmit}>
-          <input required type="text" placeholder="username" />
-          <input required type="email" placeholder="email" />
-          <input required type="password" placeholder="password" />
+          <input required type="text" placeholder="username *" />
+          <input required type="email" placeholder="email *" />
+          <input required type="password" placeholder="password *" />
           <input required style={{ display: "none" }} type="file" id="file" />
           <label htmlFor="file">
             <img src={Add} alt="" />
-            <span>Upload your profile picture</span>
+            <span>Upload your profile picture *</span>
           </label>
           <button disabled={loading}>Sign up</button>
-          {loading && <span>Uploading and compressing the image please wait...</span>}
-          {err && <span>Something went wrong</span>}
+          {loading && <span>Uploading and compressing image please wait.</span>}
+          {err && <span>Something went wrong!</span>}
         </form>
         <p>
           Signed up already? <Link to="/Login">Login</Link>

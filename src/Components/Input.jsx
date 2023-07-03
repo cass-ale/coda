@@ -24,6 +24,7 @@ const Input = () => {
   const [img, setImg] = useState(null);
   const { currentUser } = useContext(AuthContext);
   const { data } = useContext(ChatContext);
+  const plchold = "Send something cute to @";
   const handleKey = (e) => {
     e.code === "Enter" && handleSend();
   };
@@ -86,7 +87,7 @@ const Input = () => {
         <label htmlFor="file">
           <img src={plus} alt="" />
         </label>
-      <input type="text" placeholder="Send a message" onKeyDown={handleKey} onChange={(e)=>setText(e.target.value)} value={text}/>
+      <input type="text" placeholder={plchold + data.user?.displayName} onKeyDown={handleKey} onChange={(e)=>setText(e.target.value)} value={text}/>
       <div className="send">
         <button disabled={isDisabled} id='button' style={{display: "none"}}>Send</button>
         <label htmlFor="button" onClick={handleSend}>
