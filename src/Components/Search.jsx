@@ -1,39 +1,44 @@
-import {useState, useContext} from 'react'
-import { collection, query, where, getDocs, setDoc, doc, updateDoc, serverTimestamp, getDoc } from "firebase/firestore";
-import {db} from "../firebase";
+import React, { useContext, useState } from "react";
+import {
+  collection,
+  query,
+  where,
+  getDocs,
+  setDoc,
+  doc,
+  updateDoc,
+  serverTimestamp,
+  getDoc,
+} from "firebase/firestore";
+import { db } from "../firebase";
 import { AuthContext } from "../context/AuthContext";
-
-
-
-
-
-
-
 const Search = () => {
-
   const [username, setUsername] = useState("");
   const [user, setUser] = useState(null);
   const [err, setErr] = useState(false);
 
   const { currentUser } = useContext(AuthContext);
 
-  const handleSearch = async() => {
-    const q = query(collection(db, "users"), where("userName", "==", username));
+  const handleSearch = async () => {
+    const q = query(
+      collection(db, "users"),
+      where("displayName", "==", username)
+    );
 
-    try{
+    try {
       const querySnapshot = await getDocs(q);
       querySnapshot.forEach((doc) => {
-        setUser(doc.data())
+        setUser(doc.data());
       });
-    } catch(err) {
+    } catch (err) {
       setErr(true);
     }
+  };
 
-
-  }
-  const handleKey = e=>{
+  const handleKey = (e) => {
     e.code === "Enter" && handleSearch();
-  }
+  };
+
   const handleSelect = async () => {
     //check whether the group(chats in firestore) exists, if not create
     const combinedId =
@@ -51,7 +56,7 @@ const Search = () => {
         await updateDoc(doc(db, "userChats", currentUser.uid), {
           [combinedId + ".userInfo"]: {
             uid: user.uid,
-            userName: user.userName,
+            displayName: user.displayName,
             photoURL: user.photoURL,
           },
           [combinedId + ".date"]: serverTimestamp(),
@@ -60,24 +65,29 @@ const Search = () => {
         await updateDoc(doc(db, "userChats", user.uid), {
           [combinedId + ".userInfo"]: {
             uid: currentUser.uid,
-            userName: currentUser.userName,
+            displayName: currentUser.displayName,
             photoURL: currentUser.photoURL,
           },
           [combinedId + ".date"]: serverTimestamp(),
         });
       }
     } catch (err) {
+      setErr(true)
       setUser(null);
       setUsername("")
     }
-
-
   };
   return (
-    <div className='search'>
+    <div className="search">
       <div className="searchForm">
-        <input type="text" placeholder='Search conversations...' onKeyDown={handleKey} onChange={e =>setUsername(e.target.value)} value={username}/>
-        </div>
+        <input
+          type="text"
+          placeholder="Search for a friend..."
+          onKeyDown={handleKey}
+          onChange={(e) => setUsername(e.target.value)}
+          value={username}
+        />
+      </div>
       {err && <span>User not found!</span>}
       {user && (
         <div className="userChat" onClick={handleSelect}>
@@ -88,7 +98,7 @@ const Search = () => {
         </div>
       )}
     </div>
-  )
-}
+  );
+};
 
-export default Search
+export default Search;
