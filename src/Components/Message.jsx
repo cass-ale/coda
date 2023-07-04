@@ -1,17 +1,27 @@
-import React, { useContext, useEffect, useRef } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import { AuthContext } from "../context/AuthContext";
 import { ChatContext } from "../context/ChatContext";
-import { Timestamp } from "firebase/firestore";
 
 const Message = ({ message }) => {
   const { currentUser } = useContext(AuthContext);
   const { data } = useContext(ChatContext);
-
+  const [full, setFull] = useState(false);
   const ref = useRef();
+  const imgRef = useRef();
 
   useEffect(() => {
     ref.current?.scrollIntoView({ behavior: "smooth" });
   }, [message]);
+
+  const toggleFullscreen = () => {
+    if (full == false) {
+      imgRef.current?.requestFullscreen();
+      setFull(true);
+    } else {
+      document.exitFullscreen();
+      setFull(false);
+    }
+  }
 
   return (
     <div
@@ -30,7 +40,7 @@ const Message = ({ message }) => {
       </div>
       <div className="messageContent">
         {message.text && <p>{message.text}</p>}
-        {message.img && <img src={message.img} alt="" />}
+        {message.img && <img src={message.img} ref={imgRef} onClick={toggleFullscreen} alt="" />}
       </div>
     </div>
   );
