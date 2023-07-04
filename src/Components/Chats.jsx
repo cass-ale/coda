@@ -10,7 +10,7 @@ const Chats = () => {
 
   const { currentUser } = useContext(AuthContext);
   const { dispatch } = useContext(ChatContext);
-  const { setShowChat } = useContext(HideContext);
+  const { setShowChat, setShowSide } = useContext(HideContext);
 
   useEffect(() => {
     const getChats = () => {
@@ -29,6 +29,7 @@ const Chats = () => {
   const handleSelect = (u) => {
     dispatch({ type: "CHANGE_USER", payload: u });
     setShowChat(true);
+    setShowSide(false);
   };
 
   return (
