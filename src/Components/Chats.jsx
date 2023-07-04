@@ -31,7 +31,13 @@ const Chats = () => {
     setShowChat(true);
     setShowSide(false);
   };
-
+  const truncate = (str) => {
+    if (window.innerWidth < 1020) {
+    return str.length > 50 ? str.substring(0, 41) + "..." : str;
+    } else {
+    return str.length > 100 ? str.substring(0, 80) + "..." : str;
+    }
+  }
   return (
     <div className="chats">
       {Object.entries(chats)?.sort((a,b)=>b[1].date - a[1].date).map((chat) => (
@@ -43,7 +49,7 @@ const Chats = () => {
           <img src={chat[1].userInfo.photoURL} alt="" />
           <div className="userChatInfo">
             <span>{chat[1].userInfo.displayName}</span>
-            <p>{chat[1].lastMessage?.text}</p>
+            <p style={{overflow: "hidden", textOverflow: "ellipsis"}}>{truncate(chat[1].lastMessage?.text)}</p>
           </div>
         </div>
       ))}
