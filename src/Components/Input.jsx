@@ -33,7 +33,9 @@ const Input = () => {
     }
   };
 
-  const isDisabled = text === "" && (img === null || img.length === 0);
+  const isDisabled = text === "" || (img === null || img.length === 0);
+
+
   useEffect(() => {
     const plcholdGen = () => {
     const num = Math.floor(Math.random() * 10);
@@ -64,6 +66,7 @@ const Input = () => {
       const uploadTask = uploadBytesResumable(storageRef, img);
 
       uploadTask.on(
+        (error) => {},
         () => {
           getDownloadURL(uploadTask.snapshot.ref).then(async (downloadURL) => {
             await updateDoc(doc(db, "chats", data.chatId), {
