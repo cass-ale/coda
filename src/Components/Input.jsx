@@ -26,11 +26,7 @@ const Input = () => {
   const { currentUser } = useContext(AuthContext);
   const { data } = useContext(ChatContext);
   const handleKey = (e) => {
-    if (isDisabled == false) {
     e.code === "Enter" && handleSend();
-    } else {
-      return null
-    }
   };
 
   const isDisabled = text === "" || (img === null || img.length === 0);
