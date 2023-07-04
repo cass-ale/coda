@@ -303,6 +303,9 @@
         .chat{
             flex: 3;
             background-color: #011526;
+            @include mobile{
+                flex: 2;
+            }
 
             .chatInfo {
                 height: 3rem;
@@ -380,6 +383,7 @@
                             border-radius: 2rem;
                             @include mobile{
                                 padding: 0.25rem 0.15rem;
+                                width: 11rem;
                             }
                         }
                     }
