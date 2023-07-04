@@ -167,6 +167,9 @@
             background-color: #0a2c48;
             overflow-y: auto;
             overflow-x: hidden;
+            @include mobile{
+                flex: 2;
+            }
             .navbar{
                 display: flex;
                 align-items: center;
@@ -250,6 +253,7 @@
                         @include mobile{
                             padding: 0.25rem;
                             padding-right: 0;
+                            font-size: 0.75rem;
                         }
                     }
                 }
@@ -268,8 +272,12 @@
                 img{
                     width: 3.25rem;
                     height: 3.25rem;
-                    border-radius: 50%;
+                    clip-path: circle();
                     object-fit: cover;
+                    @include mobile {
+                        width: 2.75rem;
+                        height: 2.75rem;
+                    }
                 }
                 .userChatInfo {
                     span{
@@ -285,6 +293,9 @@
                         font-size: 0.9rem;
                         margin-top: 0.25rem;
                         font-family: "Mukta";
+                        @include mobile{
+                            font-size: 0.55rem;
+                        }
                     }
                 }
             }
@@ -358,6 +369,7 @@
                             font-family: "Mukta";
                             @include mobile{
                                 font-size: 0.5rem;
+                                border-radius: 1rem;
                             }
                         }
                         img{
@@ -368,7 +380,7 @@
                             border-radius: 2rem;
                             @include mobile{
                                 width: 5rem;
-                                padding: 0.25rem;
+                                padding: 0.25rem 0.15rem;
                             }
                         }
                     }
@@ -383,6 +395,9 @@
                             color: #e6f3fe;
                             border-radius: 2rem 2rem 0.4rem 2rem;
                             max-width: max-content;
+                            @include mobile {
+                                border-radius: 1rem 1rem 0.2rem 1rem;
+                            }
                         }
                         img{
                             background-color: #D90754;

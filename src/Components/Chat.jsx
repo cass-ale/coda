@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import max from "../img/maximize.svg";
+import min from "../img/minimize-2.svg";
 import Messages from "./Messages";
 import Input from "./Input";
 import { ChatContext } from "../context/ChatContext";
@@ -18,7 +19,7 @@ const Chat = () => {
       <div className="chatInfo">
         <span>{data.user?.displayName}</span>
         <div className="chatIcons">
-          <img src={max} alt="" onClick={handleClick}/>
+          <img src={showSide ? max : min} alt="" onClick={handleClick}/>
         </div>
       </div>
       <Messages />

@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import plus from '../img/plus-circle.svg'
 import send from '../img/send.svg'
 import { AuthContext } from "../context/AuthContext";
@@ -22,15 +22,41 @@ import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
 const Input = () => {
   const [text, setText] = useState("");
   const [img, setImg] = useState(null);
+  const [plc, setPlc] = useState("");
   const { currentUser } = useContext(AuthContext);
   const { data } = useContext(ChatContext);
-  const plchold = "Send something cute to @";
   const handleKey = (e) => {
+    if (isDisabled == false) {
     e.code === "Enter" && handleSend();
+    } else {
+      return null
+    }
   };
 
-  const isDisabled = text === "" && img === null;
+  const isDisabled = text === "" && (img === null || img.length === 0);
+  useEffect(() => {
+    const plcholdGen = () => {
+    const num = Math.floor(Math.random() * 10);
+    let hold = "";
 
+    if (num == 0) {
+      hold = "If it's been a while, say hey to @";
+    } else if (num < 3) {
+      hold = "Send something cute to @";
+    } else if (num < 5) {
+      hold = "Something to say? Say it to @";
+    } else if (num < 7) {
+      hold = "Plan to hang out with @";
+    } else if (num < 9) {
+      hold = "Maybe it's time to see @";
+    } else {
+      hold = "Give a couple compliments to @";
+    }
+
+    setPlc(hold);
+  }
+    plcholdGen();
+  }, [data.chatId]);
   const handleSend = async () => {
     if (img) {
       const storageRef = ref(storage, uuid());
@@ -38,7 +64,6 @@ const Input = () => {
       const uploadTask = uploadBytesResumable(storageRef, img);
 
       uploadTask.on(
-        (error) => {},
         () => {
           getDownloadURL(uploadTask.snapshot.ref).then(async (downloadURL) => {
             await updateDoc(doc(db, "chats", data.chatId), {
@@ -87,7 +112,7 @@ const Input = () => {
         <label htmlFor="file">
           <img src={plus} alt="" />
         </label>
-      <input type="text" placeholder={plchold + data.user?.displayName} onKeyDown={handleKey} onChange={(e)=>setText(e.target.value)} value={text}/>
+      <input type="text" placeholder={plc + data.user?.displayName} onKeyDown={handleKey} onChange={(e)=>setText(e.target.value)} value={text}/>
       <div className="send">
         <button disabled={isDisabled} id='button' style={{display: "none"}}>Send</button>
         <label htmlFor="button" onClick={handleSend}>
