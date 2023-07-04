@@ -23,7 +23,7 @@ const Login = () => {
     <div className="entryPage">
       <div className="entryForm">
         <span className="logo">CODA</span>
-        <span className="title">Login</span>
+        <span className="title">Welcome Back!</span>
         <form onSubmit={handleSubmit}>
           <input type="email" placeholder="email" />
           <input type="password" placeholder="password" />

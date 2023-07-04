@@ -111,7 +111,7 @@ const Input = () => {
   };
   return (
     <div className='input'>
-        <input type="file" style={{display: "none"}} id='file' onChange={(e)=>setImg(e.target.files[0])}/>
+        <input type="file" style={{display: "none"}} id='file' onChange={(e)=>setImg(e.target.files[0])} accept="image/png, image/jpg, image/jpeg"/>
         <label htmlFor="file">
           <img src={plus} alt="" />
         </label>

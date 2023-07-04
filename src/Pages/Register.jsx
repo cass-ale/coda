@@ -63,12 +63,12 @@ const Register = () => {
     <div className="entryPage">
       <div className="entryForm">
         <span className="logo">CODA</span>
-        <span className="title">Register</span>
+        <span className="title">Sign Up!</span>
         <form onSubmit={handleSubmit}>
           <input required type="text" placeholder="username *" />
           <input required type="email" placeholder="email *" />
           <input required type="password" placeholder="password *" />
-          <input required style={{ display: "none" }} type="file" id="file" />
+          <input required style={{ display: "none" }} type="file" id="file" accept="image/png, image/jpg, image/jpeg" />
           <label htmlFor="file">
             <img src={Add} alt="" />
             <span>Upload your profile picture *</span>
