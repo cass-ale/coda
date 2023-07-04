@@ -322,7 +322,7 @@
             .messages {
                 padding: 1rem;
                 height: calc(100% - 168px);
-                overflow-y: scroll;
+                overflow-y: auto;
 
                 .message{
                     padding: 0.75rem;
