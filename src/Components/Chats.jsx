@@ -49,7 +49,7 @@ const Chats = () => {
           <img src={chat[1].userInfo.photoURL} alt="" />
           <div className="userChatInfo">
             <span>{chat[1].userInfo.displayName}</span>
-            <p style={{overflow: "hidden", textOverflow: "ellipsis"}}>{truncate(chat[1].lastMessage?.text)}</p>
+            <p style={{overflow: "hidden", textOverflow: "ellipsis"}}>{chat[1].text == null ? chat[1].lastMessage?.text : truncate(chat[1].lastMessage?.text)}</p>
           </div>
         </div>
       ))}
