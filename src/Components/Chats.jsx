@@ -5,9 +5,14 @@ import { AuthContext } from "../context/AuthContext";
 import { ChatContext } from "../context/ChatContext";
 import { db } from "../firebase";
 
+
+
+
+
+
+
 const Chats = () => {
   const [chats, setChats] = useState([]);
-
   const { currentUser } = useContext(AuthContext);
   const { dispatch } = useContext(ChatContext);
   const { setShowChat, setShowSide } = useContext(HideContext);
@@ -25,7 +30,6 @@ const Chats = () => {
 
     currentUser.uid && getChats();
   }, [currentUser.uid]);
-
   const handleSelect = (u) => {
     dispatch({ type: "CHANGE_USER", payload: u });
     setShowChat(true);

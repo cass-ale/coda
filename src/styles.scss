@@ -259,8 +259,12 @@
                     }
                 }
             }
+            .chats{
+                display: flex;
+            }
             .userChat{
                 display: flex;
+                width: 100%;
                 padding: 0.5rem;
                 align-items: center;
                 gap: 0.5rem;
@@ -280,7 +284,23 @@
                         height: 2.75rem;
                     }
                 }
+                section{
+                    display: flex;
+                    width: 100%;
+                    justify-content: space-between;
+                    align-items: center;
+                    img{
+                        cursor: pointer;
+                        width: 2rem;
+                        height: auto;
+                        transition: all 0.5s;
+                        &:active{
+                            transform: scale(0.9);
+                        }
+                    }
+                }
                 .userChatInfo {
+                    width: 100%;
                     span{
                         font-weight: bold;
                         font-size: 1.15rem;
