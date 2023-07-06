@@ -29,7 +29,7 @@ const Input = () => {
     e.code === "Enter" && handleSend();
   };
 
-  const isDisabled = text === "" || (img === null || img.length === 0);
+  const isDisabled = (text === "" || text.length > 250) || (img === null || img.length === 0);
 
 
   useEffect(() => {
@@ -111,7 +111,7 @@ const Input = () => {
         <label htmlFor="file">
           <img src={plus} alt="" />
         </label>
-      <input type="text" placeholder={plc + data.user?.displayName} onKeyDown={handleKey} onChange={(e)=>setText(e.target.value)} value={text}/>
+      <input maxLength={150} type="text" placeholder={plc + data.user?.displayName} onKeyDown={handleKey} onChange={(e)=>setText(e.target.value)} value={text}/>
       <div className="send">
         <button disabled={isDisabled} id='button' style={{display: "none"}}>Send</button>
         <label htmlFor="button" onClick={handleSend}>

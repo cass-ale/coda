@@ -37,9 +37,9 @@ const Chats = () => {
   };
   const truncate = (str) => {
     if (window.innerWidth < 1020) {
-    return str.length > 50 ? str.substring(0, 41) + "..." : str;
+    return str.length > 50 ? str.substring(0, 25) + "..." : str;
     } else {
-    return str.length > 100 ? str.substring(0, 80) + "..." : str;
+    return str.length > 100 ? str.substring(0, 50) + "..." : str;
     }
   }
   return (

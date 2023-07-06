@@ -330,8 +330,8 @@
                     clip-path: circle();
                     object-fit: cover;
                     @include mobile {
-                        width: 2.75rem;
-                        height: 2.75rem;
+                        width: 2.75rem !important;
+                        height: 2.75rem !important;
                     }
                 }
                 section{
@@ -434,6 +434,7 @@
                     .messageContent{
                         max-width: 80%;
                         display: flex;
+                        flex-wrap: wrap;
                         flex-direction: column;
                         gap: 1rem;
 
