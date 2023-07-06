@@ -179,6 +179,7 @@
                 padding: 1rem;
                 justify-content: space-between;
                 color: #e6f3fe;
+                z-index: 999;
 
                 @include mobile{
                     padding: 0rem 0.75rem;
@@ -213,8 +214,9 @@
                         color: #e6f3fe;
                         font-size: 1rem;
                         font-family: "OverpassB";
-                        @include mobile{
-                            display: none;
+                        cursor: pointer;
+                        &:active{
+                            text-decoration: underline;
                         }
                     }
                     button{
@@ -231,6 +233,40 @@
                         }
                         @include mobile {
                             font-size: 0.5rem;
+                        }
+                    }
+                    .menu{
+                        img{
+                            background-color: transparent;
+                            cursor: pointer;
+                        }
+                        .menuBox{
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: flex-start;
+                            align-items: center;
+                            background-color: #011d35;
+                            color: #e6f3fe;
+                            width: 15vw;
+                            height: 15vh;
+                            position: absolute;
+                            z-index: 9999;
+                            gap: 2.5rem;
+                            padding: 1rem;
+                            section{
+                                width: 100%;
+                                display: flex;
+                                justify-content: flex-end;
+                                margin-right: 2.5vw;
+                                img{
+                                    cursor: pointer;
+                                }
+                            }
+                            @include mobile{
+                                width: 50vw;
+                                left: 25vw;
+                                top: 42.5vh;
+                            }
                         }
                     }
                 }

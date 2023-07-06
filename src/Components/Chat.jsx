@@ -23,7 +23,14 @@ const Chat = () => {
     setFull(false);
   }
 }
-
+const copy = async () => {
+  let text = document.getElementById('username').innerHTML;
+  try {
+    await navigator.clipboard.writeText(text);
+  } catch (err) {
+    console.error('Failed to copy', err)
+  }
+}
   const handleClick = () => {
     if (window.innerWidth < width){
     setShowSide(!showSide);
@@ -36,7 +43,7 @@ const Chat = () => {
   return (
     <div className="chat">
       <div className="chatInfo">
-        <span>{data.user?.displayName}</span>
+        <span onClick={copy}>{data.user?.displayName}</span>
         <img src={data.user?.photoURL} alt="" ref={imgRef} onClick={toggleFullscreen} style={{clipPath: "circle()", width: "3rem", height: "auto", objectFit: "cover", cursor: "pointer"}} />
         <div className="chatIcons">
           <img src={showSide ? max : min} alt="" onClick={handleClick}/>
