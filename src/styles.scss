@@ -310,6 +310,7 @@
             }
             .chats{
                 display: flex;
+                flex-direction: column;
             }
             .userChat{
                 display: flex;
@@ -349,6 +350,8 @@
                     }
                 }
                 .userChatInfo {
+                    display: flex;
+                    flex-direction: column;
                     width: 100%;
                     span{
                         font-weight: bold;

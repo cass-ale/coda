@@ -12,7 +12,6 @@ const Chat = () => {
   const [full, setFull] = useState(false);
 
   const width = 1020;
-
   const imgRef = useRef();
   const toggleFullscreen = () => {
   if (full == false) {
@@ -24,9 +23,8 @@ const Chat = () => {
   }
 }
 const copy = async () => {
-  let text = document.getElementById('username').innerHTML;
   try {
-    await navigator.clipboard.writeText(text);
+    await navigator.clipboard.writeText(data.user?.displayName);
   } catch (err) {
     console.error('Failed to copy', err)
   }
@@ -43,7 +41,7 @@ const copy = async () => {
   return (
     <div className="chat">
       <div className="chatInfo">
-        <span id="username" onClick={copy}>{data.user?.displayName}</span>
+        <span style={{cursor: "pointer"}} onClick={copy}>{data.user?.displayName}</span>
         <img src={data.user?.photoURL} alt="" ref={imgRef} onClick={toggleFullscreen} style={{clipPath: "circle()", width: "3rem", height: "auto", objectFit: "cover", cursor: "pointer"}} />
         <div className="chatIcons">
           <img src={showSide ? max : min} alt="" onClick={handleClick}/>
