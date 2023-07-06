@@ -43,7 +43,7 @@ const copy = async () => {
   return (
     <div className="chat">
       <div className="chatInfo">
-        <span onClick={copy}>{data.user?.displayName}</span>
+        <span id="username" onClick={copy}>{data.user?.displayName}</span>
         <img src={data.user?.photoURL} alt="" ref={imgRef} onClick={toggleFullscreen} style={{clipPath: "circle()", width: "3rem", height: "auto", objectFit: "cover", cursor: "pointer"}} />
         <div className="chatIcons">
           <img src={showSide ? max : min} alt="" onClick={handleClick}/>
