@@ -389,13 +389,18 @@
                 justify-content: space-between;
                 color: #e6f3fe;
                 font-family: "OverpassB";
+                span{
+                    cursor: pointer;
+                    &:active{
+                        text-decoration: underline #e6f3fe !important;
+                    }
+                }
             }
 
             .chatIcons {
                 display: flex;
                 align-items: center;
                 gap: 0.85rem;
-
                 img{
                     height: 1.5rem;
                     cursor: pointer;
