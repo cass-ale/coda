@@ -14,9 +14,13 @@ const Register = () => {
   const [files, setFiles] = useState(false);
 
   const handleSubmit = async (e) => {
+    const identity = (str) => {
+      const num = Math.floor(Math.random() + Math.random() * 10000);
+      return `${str}#${num}`
+    }
     setLoading(true);
     e.preventDefault();
-    const user = e.target[0].value;
+    const user = identity(e.target[0].value);
     const displayName = user.toLowerCase();
     const email = e.target[1].value;
     const password = e.target[2].value;
