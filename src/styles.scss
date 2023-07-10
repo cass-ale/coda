@@ -58,8 +58,11 @@
     align-items: center;
     background-color: #011526;
     overflow-y: auto;
+    @include mobile{
+        height: 110vh;
+    }
     @include landscape{
-        height: 200vh;
+        height: 210vh;
     }
 
     .entryForm {
