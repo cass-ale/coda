@@ -256,9 +256,11 @@
                             justify-content: flex-start;
                             align-items: center;
                             background-color: #011d35;
+                            border-radius: 0.25rem;
+                            border: #D90754 0.1rem solid;
                             color: #e6f3fe;
                             width: 15vw;
-                            height: 15vh;
+                            height: 25vh;
                             position: absolute;
                             z-index: 9999;
                             gap: 2.5rem;
@@ -272,14 +274,21 @@
                                     cursor: pointer;
                                 }
                             }
+                            button{
+                                font-size: 1rem;
+                            }
                             @include mobile{
+                                height: 30vh;
                                 width: 50vw;
                                 left: 25vw;
-                                top: 42.5vh;
+                                top: 35vh;
+                                button {
+                                    font-size: 0.8rem;
+                                }
                             }
                             @include landscape{
-                                top: 35.5vh;
-                                height: 30vh;
+                                top: 21vh;
+                                height: 55vh;
                             }
                         }
                     }

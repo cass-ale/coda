@@ -21,6 +21,7 @@ const Menu = () => {
 
     {menu && <div className='menuBox'>
     <section><img src={close} alt="" onClick={()=>setMenu(false)} /></section>
+    <a href='mailto:cass.ale@outlook.com?subject=Coda Messaging Contact&cc=cass@caprimag.com&body=Hi, this is a prewritten message to guide you in writing an email regarding the Coda Messaging App. If you have any feedback, comments, or questions, feel free to write them below, and I will do my best to reply quickly. Thanks for trying Coda!' target="_blank" rel="noopener noreferrer"><button>Comments or Questions?</button></a>
     <button onClick={()=>signOut(auth)}>Sign Out</button>
     </div>}
     </div>
