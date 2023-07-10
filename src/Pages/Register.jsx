@@ -71,7 +71,7 @@ const Register = () => {
         <span className="logo">CODA</span>
         <span className="title">Sign Up!</span>
         <form onSubmit={handleSubmit} autoComplete="on">
-          <input autoFocus required minLength={3} maxLength={15} pattern="[a-zA-Z0-9._]{3,15}$" title="Username can only contain letters, numbers, periods, and underscores." type="text" placeholder="username *" />
+          <input autoFocus required minLength={3} maxLength={15} pattern="[a-zA-Z._]{3,15}$" title="Username can only contain letters, periods, and underscores." type="text" placeholder="username *" />
           <input required type="email" pattern="^\S+@\S+\.\S{2,}$" title="Email addresses must fit the format: example@domain.**" placeholder="email *" />
           <input required minLength={8} maxLength={30} type="password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_])(?!.*\s).{8,}$" title="Password must be at least 8 characters long, contain at least one uppercase letter, one lowercase letter, and one number. White spaces are not allowed." placeholder="password *" />
           <input required style={{ display: "none" }} onChange={()=>setFiles(true)} type="file" id="file" accept="image/png, image/jpg, image/jpeg" />
