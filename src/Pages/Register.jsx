@@ -16,11 +16,11 @@ const Register = () => {
   const handleSubmit = async (e) => {
     setLoading(true);
     e.preventDefault();
-    const displayName = e.target[0].value;
+    const user = e.target[0].value;
+    const displayName = user.toLowerCase();
     const email = e.target[1].value;
     const password = e.target[2].value;
     const file = e.target[3].files[0];
-
     try {
       //Create user
       const res = await createUserWithEmailAndPassword(auth, email, password);
