@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Add from "../img/file-plus.svg";
+import check from "../img/check-circle.svg"
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth, db, storage } from "../firebase";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
@@ -10,6 +11,7 @@ const Register = () => {
   const [err, setErr] = useState(false);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const [files, setFiles] = useState(false);
 
   const handleSubmit = async (e) => {
     setLoading(true);
@@ -64,14 +66,14 @@ const Register = () => {
       <div className="entryForm">
         <span className="logo">CODA</span>
         <span className="title">Sign Up!</span>
-        <form onSubmit={handleSubmit}>
-          <input required type="text" placeholder="username *" />
-          <input required type="email" placeholder="email *" />
-          <input required type="password" placeholder="password *" />
-          <input required style={{ display: "none" }} type="file" id="file" accept="image/png, image/jpg, image/jpeg" />
+        <form onSubmit={handleSubmit} autoComplete="on">
+          <input autoFocus required minLength={3} maxLength={15} pattern="[a-zA-Z0-9._]{3,15}$" title="Username can only contain letters, numbers, periods, and underscores." type="text" placeholder="username *" />
+          <input required type="email" pattern="^\S+@\S+\.\S{2,}$" title="Email addresses must fit the format: example@domain.**" placeholder="email *" />
+          <input required minLength={8} maxLength={30} type="password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_])(?!.*\s).{8,}$" title="Password must be at least 8 characters long, contain at least one uppercase letter, one lowercase letter, and one number. White spaces are not allowed." placeholder="password *" />
+          <input required style={{ display: "none" }} onChange={()=>setFiles(true)} type="file" id="file" accept="image/png, image/jpg, image/jpeg" />
           <label htmlFor="file">
-            <img src={Add} alt="" />
-            <span>Upload your profile picture *</span>
+          {!files ?<><img src={Add} alt="" />
+             <span>Upload your profile picture *</span></> : <><img src={check} alt="" /><span>Photo Added!</span></>}
           </label>
           <button disabled={loading}>Sign up</button>
           {loading && <span>Uploading and compressing image please wait.</span>}
