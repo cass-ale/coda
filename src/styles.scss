@@ -183,7 +183,8 @@
             .navbar{
                 display: flex;
                 align-items: center;
-                background-color: #011526;
+                background-image: url(./bg.png);
+                background-size: cover;
                 height: 3rem;
                 padding: 1rem;
                 justify-content: space-between;
@@ -560,6 +561,8 @@
             font-family: "FiraEBold";
             span{
                 opacity: 0.55;
+                display: flex;
+                align-items: center;
             }
             @include mobile{
                 font-size: 3.5rem;
