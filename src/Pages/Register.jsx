@@ -83,6 +83,12 @@ const Register = () => {
           {loading && <span>Uploading and compressing image please wait.</span>}
           {err && <span>Something went wrong!</span>}
         </form>
+        <ul>
+          <li>Usernames must be at least 3 characters and can only contain letters, numbers, periods, and underscores.</li>
+          <li>Email addresses must fit the following format: example@domain.**</li>
+          <li>Password must be at least 8 characters long, contain at least one uppercase letter, one lowercase letter, and one number. White spaces are not allowed.</li>
+          <li>A Profile Picture is required to sign up for CODA.</li>
+        </ul>
         <p>
           Signed up already? <Link to="/Login">Login</Link>
         </p>
