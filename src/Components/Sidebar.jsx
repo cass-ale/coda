@@ -2,6 +2,7 @@ import React from 'react';
 import Nav from "./Nav";
 import Search from './Search';
 import Chats from './Chats'
+import Profile from './Profile';
 
 
 
@@ -13,6 +14,7 @@ const Sidebar = () => {
       <Nav />
       <Search />
       <Chats />
+      <Profile/>
     </div>
   )
 }

@@ -336,6 +336,27 @@
             .chats{
                 display: flex;
                 flex-direction: column;
+                height: calc(100% - 223.5px);
+                @include mobile{
+                    height: calc(100% - 180px);
+                }
+            }
+            .profileBar{
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 1rem;
+                height: 4rem;
+                background-color: #011526;
+                img{
+                    width: 4rem;
+                    height: auto;
+                    clip-path: circle();
+                    object-fit: cover;
+                }
+                span{
+                    font-family: "OverpassB";
+                }
             }
             .userChat{
                 display: flex;
