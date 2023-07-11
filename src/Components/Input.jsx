@@ -13,6 +13,7 @@ import {
 import { db, storage } from "../firebase";
 import { v4 as uuid } from "uuid";
 import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
+import imageCompression from 'browser-image-compression';
 
 
 
@@ -57,9 +58,15 @@ const Input = () => {
   }, [data.chatId]);
   const handleSend = async () => {
     if (img) {
+      const options = {
+        maxSizeMB: 0.01,
+        maxWidthOrHeight: 1920
+      }
+      const newImg = await imageCompression(img, options)
+
       const storageRef = ref(storage, uuid());
 
-      const uploadTask = uploadBytesResumable(storageRef, img);
+      const uploadTask = uploadBytesResumable(storageRef, newImg);
 
       uploadTask.on(
         (error) => {},
