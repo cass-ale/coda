@@ -228,22 +228,6 @@
                     @include mobile {
                         gap: 0.25rem;
                     }
-                    img{
-                        background-color: #0578A6;
-                        width: 1.75rem;
-                        height: 1.75rem;
-                        clip-path: circle();
-                        object-fit: cover;
-                    }
-                    span{
-                        color: #e6f3fe;
-                        font-size: 1rem;
-                        font-family: "OverpassB";
-                        cursor: pointer;
-                        &:active{
-                            text-decoration: underline;
-                        }
-                    }
                     button{
                         font-weight: bold;
                         font-size: 0.85rem;
@@ -353,9 +337,19 @@
                     height: auto;
                     clip-path: circle();
                     object-fit: cover;
+                    @include mobile {
+                        width: 2.5rem;
+                    }
                 }
                 span{
                     font-family: "OverpassB";
+                    cursor: pointer;
+                    &:active{
+                        text-decoration: underline;
+                    }
+                    @include mobile{
+                        font-size: 0.85rem;
+                    }
                 }
             }
             .userChat{
