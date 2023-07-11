@@ -1,5 +1,6 @@
 import React, { useContext, useState, useEffect } from "react";
 import plus from '../img/plus-circle.svg'
+import check from "../img/check-circle.svg";
 import send from '../img/send.svg'
 import { AuthContext } from "../context/AuthContext";
 import { ChatContext } from "../context/ChatContext";
@@ -29,7 +30,7 @@ const Input = () => {
   const handleKey = (e) => {
     e.code === "Enter" && handleSend();
   };
-
+  const added = "Image added!"
   const isDisabled = (text === "" || text.length > 250) || (img === null || img.length === 0);
 
 
@@ -116,9 +117,9 @@ const Input = () => {
     <div className='input'>
         <input type="file" style={{display: "none"}} id='file' onChange={(e)=>setImg(e.target.files[0])} accept="image/png, image/jpg, image/jpeg"/>
         <label htmlFor="file">
-          <img src={plus} alt="" />
+          {img == null ? <img src={plus} alt="" /> : <img src={check} alt="" />}
         </label>
-      <input maxLength={150} type="text" placeholder={plc + data.user?.displayName} onKeyDown={handleKey} onChange={(e)=>setText(e.target.value)} value={text}/>
+      <input maxLength={150} type="text" placeholder={img == null ? (plc + data.user?.displayName) : (added)} onKeyDown={handleKey} onChange={(e)=>setText(e.target.value)} value={text}/>
       <div className="send">
         <button disabled={isDisabled} id='button' style={{display: "none"}}>Send</button>
         <label htmlFor="button" onClick={handleSend}>
