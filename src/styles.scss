@@ -217,7 +217,7 @@
                     font-family: "FiraEBold";
                     font-size: 2rem;
                     @include mobile{
-                        font-size: 1rem;
+                        font-size: 1.75rem;
                     }
                 }
 
@@ -280,7 +280,7 @@
                                 height: 30vh;
                                 width: 50vw;
                                 left: 25vw;
-                                top: 35vh;
+                                top: 25vh;
                                 button {
                                     font-size: 0.8rem;
                                 }
@@ -349,7 +349,7 @@
                         text-decoration: underline;
                     }
                     @include mobile{
-                        font-size: 0.85rem;
+                        font-size: 0.75rem;
                     }
                 }
             }
@@ -408,7 +408,7 @@
                         margin-top: 0.25rem;
                         font-family: "Mukta";
                         @include mobile{
-                            font-size: 0.55rem;
+                            font-size: 0.75rem;
                         }
                     }
                 }
@@ -434,6 +434,9 @@
                     cursor: pointer;
                     &:active{
                         text-decoration: underline #e6f3fe !important;
+                    }
+                    @include mobile {
+                        font-size: 0.75rem;
                     }
                 }
             }
