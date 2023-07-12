@@ -25,8 +25,8 @@ const Login = () => {
         <span className="logo">CODA</span>
         <span className="title">Welcome Back!</span>
         <form onSubmit={handleSubmit} autoComplete="on">
-          <input autoFocus required type="email" title="Please enter your email address." placeholder="email" />
-          <input required type="password" title="Please enter your password." placeholder="password" />
+          <input autoFocus required autoCorrect="off" autoComplete="email" type="email" pattern="^\S+@\S+\.\S{2,}$" title="Please enter your email address." placeholder="email" />
+          <input required type="password" autoComplete="password" minLength={8} maxLength={30} title="Please enter your password." placeholder="password" />
           <button>Sign in</button>
           {err && <span>Something went wrong!</span>}
         </form>
