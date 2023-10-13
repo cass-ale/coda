@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase";
+import logo from "/CODA.png";
 
 const Login = () => {
   const [err, setErr] = useState(false);
@@ -22,7 +23,8 @@ const Login = () => {
   return (
     <div className="entryPage">
       <div className="entryForm">
-        <span className="logo">CODA</span>
+        <img id="login" src={logo} />
+        {/* <span className="logo">CODA</span> */}
         <span className="title">Welcome Back!</span>
         <form onSubmit={handleSubmit} autoComplete="on">
           <input autoFocus required type="email" title="Please enter your email address." placeholder="email" />

@@ -6,6 +6,8 @@ import { auth, db, storage } from "../firebase";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { doc, setDoc } from "firebase/firestore";
 import { useNavigate, Link } from "react-router-dom";
+import logo from "/CODA.png";
+
 
 const Register = () => {
   const [err, setErr] = useState(false);
@@ -68,7 +70,8 @@ const Register = () => {
   return (
     <div className="entryPage">
       <div className="entryForm">
-        <span className="logo">CODA</span>
+
+        <img id="login" src={logo} />
         <span className="title">Sign Up!</span>
         <form onSubmit={handleSubmit} autoComplete="on">
           <input autoFocus required minLength={3} maxLength={15} pattern="[a-zA-Z._]{3,15}$" title="Username can only contain letters, periods, and underscores." type="text" placeholder="username *" />
