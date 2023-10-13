@@ -74,9 +74,9 @@ const Register = () => {
         <img id="login" src={logo} />
         <span className="title">Sign Up!</span>
         <form onSubmit={handleSubmit} autoComplete="on">
-          <input autoFocus required minLength={3} maxLength={15} pattern="[a-zA-Z._]{3,15}$" title="Username can only contain letters, periods, and underscores." type="text" placeholder="username *" />
-          <input required type="email" pattern="^\S+@\S+\.\S{2,}$" title="Email addresses must fit the format: example@domain.**" placeholder="email *" />
-          <input required minLength={8} maxLength={30} type="password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_])(?!.*\s).{8,}$" title="Password must be at least 8 characters long, contain at least one uppercase letter, one lowercase letter, and one number. White spaces are not allowed." placeholder="password *" />
+          <input autoFocus required autoCorrect="off" minLength={3} maxLength={10} pattern="[a-zA-Z._]{3,10}$" title="Username can only contain letters, periods, and underscores. Max 10 characters." type="text" placeholder="username *" />
+          <input required autoComplete="email" type="email" pattern="^\S+@\S+\.\S{2,}$" title="Email addresses must fit the format: example@domain.**" placeholder="email *" />
+          <input required autoComplete="password" minLength={8} maxLength={30} type="password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_])(?!.*\s).{8,30}$" title="Password must be at least 8 characters long, contain at least one uppercase letter, one lowercase letter, and one number. White spaces are not allowed." placeholder="password *" />
           <input required style={{ display: "none" }} onChange={()=>setFiles(true)} type="file" id="file" accept="image/png, image/jpg, image/jpeg" />
           <label htmlFor="file">
           {!files ?<><img src={Add} alt="" />
@@ -87,7 +87,7 @@ const Register = () => {
           {err && <span>Something went wrong!</span>}
         </form>
         {!loading && <ul>
-          <li>Usernames must be at least 3 characters and can only contain letters, periods, and underscores.</li>
+          <li>Usernames must be at least 3 characters and can only contain letters, periods, and underscores. Max 10 characters.</li>
           <li>Email addresses must fit the following format: example@domain.**</li>
           <li>Password must be at least 8 characters long, contain at least one uppercase letter, one lowercase letter, and one number. White spaces are not allowed.</li>
           <li>A Profile Picture is required to sign up for CODA.</li>
